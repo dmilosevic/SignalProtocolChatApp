@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5E0B744-CDB9-4DDA-B873-C2341ABED6E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>signal_protocol_pcl</RootNamespace>
+    <AssemblyName>signal-protocol-pcl</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="SignalProtocolAddress.cs" />
+    <Compile Include="DecryptionCallback.cs" />
+    <Compile Include="DuplicateMessageException.cs" />
+    <Compile Include="ecc\Curve.cs" />
+    <Compile Include="ecc\Curve25519.cs" />
+    <Compile Include="ecc\DjbECPrivateKey.cs" />
+    <Compile Include="ecc\DjbECPublicKey.cs" />
+    <Compile Include="ecc\ECKeyPair.cs" />
+    <Compile Include="ecc\ECPrivateKey.cs" />
+    <Compile Include="ecc\ECPublicKey.cs" />
+    <Compile Include="ecc\impl\Curve25519ManagedProvider.cs" />
+    <Compile Include="ecc\impl\ICurve25519Provider.cs" />
+    <Compile Include="ecc\impl\Curve25519NativeProvider.cs" />
+    <Compile Include="IdentityKey.cs" />
+    <Compile Include="IdentityKeyPair.cs" />
+    <Compile Include="InvalidKeyException.cs" />
+    <Compile Include="InvalidKeyIdException.cs" />
+    <Compile Include="InvalidMacException.cs" />
+    <Compile Include="InvalidMessageException.cs" />
+    <Compile Include="InvalidVersionException.cs" />
+    <Compile Include="kdf\DerivedMessageSecrets.cs" />
+    <Compile Include="kdf\DerivedRootSecrets.cs" />
+    <Compile Include="kdf\HKDF.cs" />
+    <Compile Include="kdf\HKDFv3.cs" />
+    <Compile Include="LegacyMessageException.cs" />
+    <Compile Include="NoSessionException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="protocol\CiphertextMessage.cs" />
+    <Compile Include="protocol\KeyExchangeMessage.cs" />
+    <Compile Include="protocol\PreKeySignalMessage.cs" />
+    <Compile Include="protocol\SenderKeyDistributionMessage.cs" />
+    <Compile Include="protocol\SenderKeyMessage.cs" />
+    <Compile Include="protocol\SignalMessage.cs" />
+    <Compile Include="protocol\WhisperProtos.cs" />
+    <Compile Include="ratchet\AliceSignalProtocolParameters.cs" />
+    <Compile Include="ratchet\BobSignalProtocolParameters.cs" />
+    <Compile Include="ratchet\ChainKey.cs" />
+    <Compile Include="ratchet\MessageKeys.cs" />
+    <Compile Include="ratchet\RatchetingSession.cs" />
+    <Compile Include="ratchet\RootKey.cs" />
+    <Compile Include="ratchet\SymmetricSignalProtocolParameters.cs" />
+    <Compile Include="SessionBuilder.cs" />
+    <Compile Include="SessionCipher.cs" />
+    <Compile Include="StaleKeyExchangeException.cs" />
+    <Compile Include="state\impl\Session.cs" />
+    <Compile Include="state\impl\TrustedKey.cs" />
+    <Compile Include="state\SignalProtocolStore.cs" />
+    <Compile Include="state\IdentityKeyStore.cs" />
+    <Compile Include="state\impl\InMemorySignalProtocolStore.cs" />
+    <Compile Include="state\impl\InMemoryIdentityKeyStore.cs" />
+    <Compile Include="state\impl\InMemoryPreKeyStore.cs" />
+    <Compile Include="state\impl\InMemorySessionStore.cs" />
+    <Compile Include="state\impl\InMemorySignedPreKeyStore.cs" />
+    <Compile Include="state\PreKeyBundle.cs" />
+    <Compile Include="state\PreKeyRecord.cs" />
+    <Compile Include="state\PreKeyStore.cs" />
+    <Compile Include="state\SessionRecord.cs" />
+    <Compile Include="state\SessionState.cs" />
+    <Compile Include="state\SessionStore.cs" />
+    <Compile Include="state\SignedPreKeyRecord.cs" />
+    <Compile Include="state\SignedPreKeyStore.cs" />
+    <Compile Include="state\StorageProtos.cs" />
+    <Compile Include="UntrustedIdentityException.cs" />
+    <Compile Include="util\ByteUtil.cs" />
+    <Compile Include="util\HMAC.cs" />
+    <Compile Include="util\KeyHelper.cs" />
+    <Compile Include="util\Medium.cs" />
+    <Compile Include="util\Pair.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="protobuf\FingerprintProtocol.proto" />
+    <None Include="protobuf\LocalStorageProtocol.proto" />
+    <None Include="protobuf\Makefile.bat" />
+    <None Include="protobuf\WhisperTextProtocol.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="curve25519">
+      <HintPath>..\packages\curve25519-pcl.1.0.1\lib\portable-net45+win+wp80+MonoAndroid10+MonoTouch10\curve25519.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>..\packages\Google.ProtocolBuffers.2.4.1.555\lib\portable-net40+sl4+sl5+wp7+wp8+win8\Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers.Serialization">
+      <HintPath>..\packages\Google.ProtocolBuffers.2.4.1.555\lib\portable-net40+sl4+sl5+wp7+wp8+win8\Google.ProtocolBuffers.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="May">
+      <HintPath>..\packages\Strilanc.Value.May.1.0.2\lib\portable-net4+sl4+wp7+win8\May.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLCrypto">
+      <HintPath>..\packages\PCLCrypto.2.0.147\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\PCLCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.BCrypt, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.BCrypt.0.3.152\lib\net40\PInvoke.BCrypt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PInvoke.Kernel32, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.Kernel32.0.3.152\lib\net40\PInvoke.Kernel32.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PInvoke.NCrypt, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.NCrypt.0.3.152\lib\net40\PInvoke.NCrypt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PInvoke.Windows.Core, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.Windows.Core.0.3.152\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Validation, Version=2.3.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Validation.2.3.7\lib\dotnet\Validation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
